@@ -298,23 +298,24 @@
 
         }
 
-        // Start & Stop currently not working
+         , pause: function() {
+             var self = this;
 
-        // , stop: function() {
-        //     var self = this;
+             self.stop = true;
+             clearInterval(self.timeout);
 
-        //     self.stop = true;
-        //     clearInterval(self.timeout);
-        // }
+             // Reset to last value in array
+             self.el.attr(self.attr, self.strings[self.strings.length - 1])
+         }
 
-        // , start: function() {
-        //     var self = this;
-        //     if(self.stop === false)
-        //        return;
+         , start: function() {
+             var self = this;
+             if(self.stop === false)
+                return;
 
-        //     this.stop = false;
-        //     this.init();
-        // }
+             this.stop = false;
+             this.init();
+         }
 
         // Reset and rebuild the element
         ,
